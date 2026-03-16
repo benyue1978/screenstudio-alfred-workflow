@@ -39,6 +39,7 @@ zsh tests/test_deeplinks.sh
 zsh tests/test_list_commands.sh
 zsh tests/test_matching.sh
 zsh tests/test_actions.sh
+zsh tests/test_build.sh
 ```
 
 ### Dry Runs
@@ -54,6 +55,18 @@ DRY_RUN=1 FIXTURE_DISPLAYS=tests/fixtures/displays.json zsh scripts/run_action.s
 ### Manual Smoke Tests
 
 Use [`tests/manual-smoke-checklist.md`](/Users/song.yue/git/screenstudio-alfred-workflow/tests/manual-smoke-checklist.md) for live verification with Screen Studio and Alfred.
+
+## Build
+
+Generate the installable Alfred package with:
+
+```bash
+zsh workflow/build-workflow.sh
+```
+
+This produces:
+
+- `workflow/Screen Studio.alfredworkflow`
 
 ## Permissions
 
