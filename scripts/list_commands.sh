@@ -2,10 +2,11 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
+source "$script_dir/lib/common.sh"
 source "$script_dir/lib/json.sh"
 source "$script_dir/lib/deeplinks.sh"
 
-query="${1-}"
+query="$(trim_whitespace "${1-}")"
 query_lc="${query:l}"
 first_item=1
 

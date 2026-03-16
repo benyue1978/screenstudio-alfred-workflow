@@ -27,3 +27,12 @@ encoded_display_output="$(DRY_RUN=1 zsh scripts/run_action.sh 'record-display|st
 encoded_window_output="$(DRY_RUN=1 zsh scripts/run_action.sh 'record-window|chrome-pricing|Google Chrome|740|530')"
 [[ "$encoded_window_output" == *"open screen-studio://record-window"* ]]
 [[ "$encoded_window_output" == *"activate Google Chrome"* ]]
+
+fallback_display_output="$(DRY_RUN=1 FIXTURE_DISPLAYS="$PWD/tests/fixtures/displays.json" zsh scripts/run_action.sh record-display 'missing-display')"
+[[ "$fallback_display_output" == "open screen-studio://record-display" ]]
+
+fallback_window_output="$(DRY_RUN=1 FIXTURE_WINDOWS="$PWD/tests/fixtures/windows.json" zsh scripts/run_action.sh record-window 'missing-window')"
+[[ "$fallback_window_output" == "open screen-studio://record-window" ]]
+
+trimmed_manual_output="$(DRY_RUN=1 zsh scripts/run_action.sh '   record-display   ' '   ')"
+[[ "$trimmed_manual_output" == "open screen-studio://record-display" ]]

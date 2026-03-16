@@ -2,6 +2,7 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
+source "$script_dir/lib/common.sh"
 source "$script_dir/lib/deeplinks.sh"
 source "$script_dir/lib/windows.sh"
 source "$script_dir/lib/displays.sh"
@@ -56,27 +57,17 @@ run_selected_window() {
   press_enter
 }
 
-unique_match_or_die() {
-  local label="$1"
+match_count() {
   local matches="$2"
-  local count
-
-  count="$(print -r -- "$matches" | sed '/^$/d' | wc -l | tr -d ' ')"
-  if [[ "$count" == "0" ]]; then
-    print -u2 -- "No $label match found"
-    exit 1
-  fi
-  if [[ "$count" != "1" ]]; then
-    print -u2 -- "Multiple $label matches found"
-    exit 1
-  fi
+  print -r -- "$matches" | sed '/^$/d' | wc -l | tr -d ' '
 }
 
 run_record_display() {
-  local query="${1-}"
+  local query
   local url
-  local matches id name center_x center_y
+  local matches id name center_x center_y count
 
+  query="$(trim_whitespace "${1-}")"
   url="$(deeplink_url record-display)"
   if [[ -z "$query" ]]; then
     open_deeplink "$url"
@@ -84,17 +75,22 @@ run_record_display() {
   fi
 
   matches="$(match_displays "$query")"
-  unique_match_or_die "display" "$matches"
+  count="$(match_count display "$matches")"
+  if [[ "$count" != "1" ]]; then
+    open_deeplink "$url"
+    return
+  fi
   IFS=$'\t' read -r id name center_x center_y <<< "$matches"
 
   run_selected_display "$id" "$center_x" "$center_y"
 }
 
 run_record_window() {
-  local query="${1-}"
+  local query
   local url
-  local matches id app_name title center_x center_y
+  local matches id app_name title center_x center_y count
 
+  query="$(trim_whitespace "${1-}")"
   url="$(deeplink_url record-window)"
   if [[ -z "$query" ]]; then
     open_deeplink "$url"
@@ -102,7 +98,11 @@ run_record_window() {
   fi
 
   matches="$(match_windows "$query")"
-  unique_match_or_die "window" "$matches"
+  count="$(match_count window "$matches")"
+  if [[ "$count" != "1" ]]; then
+    open_deeplink "$url"
+    return
+  fi
   IFS=$'\t' read -r id app_name title center_x center_y <<< "$matches"
 
   run_selected_window "$id" "$app_name" "$center_x" "$center_y"
@@ -120,8 +120,8 @@ run_simple_action() {
   open_deeplink "$url"
 }
 
-action_id="${1-}"
-query="${2-}"
+action_id="$(trim_whitespace "${1-}")"
+query="$(trim_whitespace "${2-}")"
 
 if [[ "$action_id" == *"|"* ]]; then
   IFS='|' read -r encoded_action encoded_id encoded_name encoded_x encoded_y <<< "$action_id"

@@ -2,17 +2,22 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
+source "$script_dir/lib/common.sh"
 source "$script_dir/lib/json.sh"
 source "$script_dir/lib/windows.sh"
 
-query="${1-}"
+query="$(trim_whitespace "${1-}")"
 first_item=1
 records=("${(@f)$(match_windows "$query")}")
+nonempty_record_count="$(print -r -- "${records[@]}" | sed '/^$/d' | wc -l | tr -d ' ')"
 
 alfred_items_open
-if [[ -z "$query" ]]; then
-  alfred_item "Record Window Manually" "Open Screen Studio window picker without auto-selection" "record-window" "screen-studio.window.manual" true
-  first_item=0
+alfred_item "Record Window Manually" "Open Screen Studio window picker without auto-selection" "record-window" "screen-studio.window.manual" true
+first_item=0
+
+if [[ -n "$query" && "$nonempty_record_count" == "0" ]]; then
+  print -n -- ","
+  alfred_item "No matching windows" "Press Enter on the first item to open the picker manually" "" "screen-studio.window.no-match" false
 fi
 for record in "${records[@]}"; do
   IFS=$'\t' read -r id app_name title center_x center_y <<< "$record"

@@ -183,7 +183,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" "$1"</string>
+				<string>/bin/zsh ./scripts/run_action.sh "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -226,7 +226,7 @@
 				<key>runningsubtext</key>
 				<string>Loading Screen Studio commands...</string>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/list_commands.sh" "$1"</string>
+				<string>/bin/zsh ./scripts/list_commands.sh "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -275,7 +275,7 @@
 				<key>runningsubtext</key>
 				<string>Looking for windows...</string>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/list_windows.sh" "$1"</string>
+				<string>/bin/zsh ./scripts/list_windows.sh "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -324,7 +324,7 @@
 				<key>runningsubtext</key>
 				<string>Looking for displays...</string>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/list_displays.sh" "$1"</string>
+				<string>/bin/zsh ./scripts/list_displays.sh "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -374,7 +374,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" record-area</string>
+				<string>/bin/zsh ./scripts/run_action.sh record-area</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -418,7 +418,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" finish-recording</string>
+				<string>/bin/zsh ./scripts/run_action.sh finish-recording</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -462,7 +462,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" cancel-recording</string>
+				<string>/bin/zsh ./scripts/run_action.sh cancel-recording</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -506,7 +506,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" restart-recording</string>
+				<string>/bin/zsh ./scripts/run_action.sh restart-recording</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -550,7 +550,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" open-settings</string>
+				<string>/bin/zsh ./scripts/run_action.sh open-settings</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -594,7 +594,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" open-projects-folder</string>
+				<string>/bin/zsh ./scripts/run_action.sh open-projects-folder</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -638,7 +638,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" toggle-recording-controls</string>
+				<string>/bin/zsh ./scripts/run_action.sh toggle-recording-controls</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -682,7 +682,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" toggle-recording-area-cover</string>
+				<string>/bin/zsh ./scripts/run_action.sh toggle-recording-area-cover</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -726,7 +726,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/bin/zsh "$alfred_workflow_path/scripts/run_action.sh" copy-and-zip-project</string>
+				<string>/bin/zsh ./scripts/run_action.sh copy-and-zip-project</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
