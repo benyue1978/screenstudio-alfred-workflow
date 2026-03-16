@@ -22,9 +22,12 @@ def has_object(obj_type, keyword, withspace):
 
 assert has_object('alfred.workflow.input.scriptfilter', 'ssd', False)
 assert has_object('alfred.workflow.input.scriptfilter', 'ssw', False)
+assert has_object('alfred.workflow.input.scriptfilter', 'screenstudio', False)
 
 for obj in objects:
-    if obj.get('type') != 'alfred.workflow.input.keyword':
-        continue
-    assert obj.get('config', {}).get('keyword') not in {'ssd', 'ssw'}
+    if obj.get('type') == 'alfred.workflow.input.keyword':
+        assert obj.get('config', {}).get('keyword') not in {'ssd', 'ssw'}
+        assert obj.get('config', {}).get('argumenttype') == 2
+    if obj.get('type') == 'alfred.workflow.input.scriptfilter':
+        assert obj.get('config', {}).get('withspace') is False
 PY
