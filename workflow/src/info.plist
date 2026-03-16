@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>me.songyue.screenstudio-alfred-workflow</string>
+	<string>cc.yuesong.screenstudio-alfred-workflow</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
@@ -210,7 +210,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -237,8 +237,8 @@
 				<string>Screen Studio</string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
+				<key>true</key>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -259,7 +259,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -281,13 +281,13 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Press Enter to run the manual item, or keep typing to target a specific item</string>
+				<string>Press Enter to run screen-studio://record-window, or keep typing to target a specific item</string>
 				<key>title</key>
-				<string>Screen Studio Window</string>
+				<string>Record Window</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -308,7 +308,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -330,13 +330,13 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Press Enter to run the manual item, or keep typing to target a specific item</string>
+				<string>Press Enter to run screen-studio://record-display, or keep typing to target a specific item</string>
 				<key>title</key>
-				<string>Screen Studio Display</string>
+				<string>Record Display</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -743,10 +743,21 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Main keyword: screenstudio
-Window keyword: ssw
-Display keyword: ssd
-One-shot keywords: ssa, ssf, ssc, ssr, sss, ssp, sstc, ssta, ssz</string>
+	<string>Control Screen Studio from Alfred.
+	
+	Main keyword: ss
+	Record Window keyword: ssw
+	Record Display keyword: ssd
+	Record Area keyword: ssa
+	Finish Recording keyword: ssf
+	Cancel Recording keyword: ssc
+	Restart Recording keyword: ssr
+	Open Settings keyword: sss
+	Open Projects Folder keyword: ssp
+	Toggle Recording Controls keyword: sstc
+	Toggle Recording Area Cover keyword: ssta
+	Copy and Zip Project keyword: ssz
+	</string>
 	<key>uidata</key>
 	<dict>
 		<key>15FE3858-CF27-487F-970F-1E11F03A496C</key>
@@ -909,6 +920,6 @@ One-shot keywords: ssa, ssf, ssc, ssr, sss, ssp, sstc, ssta, ssz</string>
 	<key>version</key>
 	<string>0.1.0</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/benyue1978/screenstudio-alfred-workflow</string>
 </dict>
 </plist>
