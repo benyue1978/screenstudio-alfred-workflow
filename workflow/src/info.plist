@@ -164,6 +164,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>E666A15A-A2AD-495A-9DDB-57C8A0DAE9B4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1EB9A82-DE7B-4260-B9D9-BADCBE58A1E6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EC4769AB-7149-46BF-A041-AD2A2D28C1A7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>389F8E68-17EF-44E9-8556-67A6F5940216</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Song Yue</string>
@@ -741,6 +767,94 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>ssw</string>
+				<key>subtext</key>
+				<string>screen-studio://record-window</string>
+				<key>text</key>
+				<string>Record Window</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E666A15A-A2AD-495A-9DDB-57C8A0DAE9B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/bin/zsh ./scripts/run_action.sh record-window</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B1EB9A82-DE7B-4260-B9D9-BADCBE58A1E6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>ssd</string>
+				<key>subtext</key>
+				<string>screen-studio://record-display</string>
+				<key>text</key>
+				<string>Record Display</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>EC4769AB-7149-46BF-A041-AD2A2D28C1A7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/bin/zsh ./scripts/run_action.sh record-display</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>389F8E68-17EF-44E9-8556-67A6F5940216</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Main keyword: screenstudio
@@ -762,6 +876,13 @@ One-shot keywords: ssa, ssf, ssc, ssr, sss, ssp, sstc, ssta, ssz</string>
 			<integer>240</integer>
 			<key>ypos</key>
 			<integer>1100</integer>
+		</dict>
+		<key>389F8E68-17EF-44E9-8556-67A6F5940216</key>
+		<dict>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>360</integer>
 		</dict>
 		<key>3A1BC59B-15FB-4013-B2BC-CE74C75EF753</key>
 		<dict>
@@ -868,6 +989,13 @@ One-shot keywords: ssa, ssf, ssc, ssr, sss, ssp, sstc, ssta, ssz</string>
 			<key>ypos</key>
 			<integer>1190</integer>
 		</dict>
+		<key>B1EB9A82-DE7B-4260-B9D9-BADCBE58A1E6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>220</integer>
+		</dict>
 		<key>BF5E68A4-96EB-4F93-A375-F422A911803F</key>
 		<dict>
 			<key>xpos</key>
@@ -895,6 +1023,20 @@ One-shot keywords: ssa, ssf, ssc, ssr, sss, ssp, sstc, ssta, ssz</string>
 			<integer>520</integer>
 			<key>ypos</key>
 			<integer>740</integer>
+		</dict>
+		<key>E666A15A-A2AD-495A-9DDB-57C8A0DAE9B4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>220</integer>
+		</dict>
+		<key>EC4769AB-7149-46BF-A041-AD2A2D28C1A7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>360</integer>
 		</dict>
 		<key>ECB600F3-DFB9-4A49-BA00-F3FAF8F01368</key>
 		<dict>
