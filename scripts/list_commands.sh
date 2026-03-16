@@ -9,9 +9,19 @@ query="${1-}"
 query_lc="${query:l}"
 first_item=1
 
+if [[ "$query_lc" == record-window\ * || "$query_lc" == window\ * || "$query_lc" == ssw\ * ]]; then
+  delegated_query="${query#* }"
+  exec "$script_dir/list_windows.sh" "$delegated_query"
+fi
+
+if [[ "$query_lc" == record-display\ * || "$query_lc" == display\ * || "$query_lc" == ssd\ * ]]; then
+  delegated_query="${query#* }"
+  exec "$script_dir/list_displays.sh" "$delegated_query"
+fi
+
 matches_query() {
   local haystack="${1:l}"
-  [[ -z "$query_lc" || "$haystack" == *"$query_lc"* ]]
+  [[ -z "$query_lc" || "$haystack" == *${query_lc}* ]]
 }
 
 item_subtitle() {

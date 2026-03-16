@@ -1,8 +1,73 @@
-# Screen Studio URL Schemes
+# Screen Studio Alfred Workflow
 
-This document records the Screen Studio URL schemes we learned from Raycast's Screen Studio extension and verified on macOS.
+This repository contains the source scripts, spec, and implementation plan for a Screen Studio Alfred Workflow intended for eventual publication in the Alfred Workflow Gallery.
 
-The goal is to support a future Alfred workflow.
+The current focus is the automation and testing layer:
+
+- all known `screen-studio://...` deep links are mapped in code
+- `record-window` supports fuzzy window matching by `app name + window title`
+- `record-display` supports fuzzy display matching by display name
+- both smart flows support `DRY_RUN=1` for repeatable local testing
+
+The Alfred workflow metadata and packaging layer can sit on top of these scripts.
+
+## Current Script Entry Points
+
+- `scripts/list_commands.sh`
+  - lists all Screen Studio commands for the main Alfred Script Filter
+  - delegates to target-aware listing when query starts with `record-window ` or `record-display `
+
+- `scripts/list_windows.sh "<query>"`
+  - returns Alfred JSON for matching windows
+
+- `scripts/list_displays.sh "<query>"`
+  - returns Alfred JSON for matching displays
+
+- `scripts/run_action.sh <action-id> [query]`
+  - runs one-shot actions directly
+  - for `record-window` and `record-display`, resolves a unique target and auto-confirms it
+
+## Testing
+
+### Contract Tests
+
+These tests run without Screen Studio:
+
+```bash
+zsh tests/test_helpers.sh
+zsh tests/test_deeplinks.sh
+zsh tests/test_list_commands.sh
+zsh tests/test_matching.sh
+zsh tests/test_actions.sh
+```
+
+### Dry Runs
+
+These exercises the action flow without moving the mouse or opening deep links:
+
+```bash
+DRY_RUN=1 zsh scripts/run_action.sh finish-recording
+DRY_RUN=1 FIXTURE_WINDOWS=tests/fixtures/windows.json zsh scripts/run_action.sh record-window Pricing
+DRY_RUN=1 FIXTURE_DISPLAYS=tests/fixtures/displays.json zsh scripts/run_action.sh record-display Studio
+```
+
+### Manual Smoke Tests
+
+Use [`tests/manual-smoke-checklist.md`](/Users/song.yue/git/screenstudio-alfred-workflow/tests/manual-smoke-checklist.md) for live verification with Screen Studio and Alfred.
+
+## Permissions
+
+The smart target-selection flow relies on macOS Accessibility access.
+
+Required:
+
+- Alfred must have Accessibility permission
+- the shell host used to run these scripts may also need Accessibility permission
+- Screen Studio must be installed
+
+## Deep Link Notes
+
+The notes below document the validated Screen Studio URL schemes and the behavior we observed while designing the workflow.
 
 ## Summary
 

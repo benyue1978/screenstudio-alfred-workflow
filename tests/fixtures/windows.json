@@ -1,0 +1,29 @@
+[
+  {
+    "id": "chrome-pricing",
+    "appName": "Google Chrome",
+    "title": "Pricing Page",
+    "x": 100,
+    "y": 80,
+    "width": 1280,
+    "height": 900
+  },
+  {
+    "id": "chrome-docs",
+    "appName": "Google Chrome",
+    "title": "Docs",
+    "x": 180,
+    "y": 120,
+    "width": 1200,
+    "height": 860
+  },
+  {
+    "id": "cursor-repo",
+    "appName": "Cursor",
+    "title": "screenstudio-alfred-workflow",
+    "x": 40,
+    "y": 60,
+    "width": 1440,
+    "height": 960
+  }
+]
