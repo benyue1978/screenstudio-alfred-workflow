@@ -22,7 +22,7 @@ def has_object(obj_type, keyword, withspace):
 
 assert has_object('alfred.workflow.input.scriptfilter', 'ssd', False)
 assert has_object('alfred.workflow.input.scriptfilter', 'ssw', False)
-assert has_object('alfred.workflow.input.scriptfilter', 'screenstudio', False)
+assert has_object('alfred.workflow.input.scriptfilter', 'ss', False)
 
 for obj in objects:
     if obj.get('type') == 'alfred.workflow.input.keyword':

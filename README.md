@@ -1,21 +1,70 @@
 # Screen Studio Alfred Workflow
 
-This repository contains the source scripts, spec, and implementation plan for a Screen Studio Alfred Workflow intended for eventual publication in the Alfred Workflow Gallery.
+Control Screen Studio from Alfred with:
 
-The current focus is the automation and testing layer:
+- one-shot shortcuts for common Screen Studio actions
+- a command browser for all supported deep links
+- smart window and display targeting for `record-window` and `record-display`
 
-- all known `screen-studio://...` deep links are mapped in code
-- `record-window` supports fuzzy window matching by `app name + window title`
-- `record-display` supports fuzzy display matching by display name
-- both smart flows support `DRY_RUN=1` for repeatable local testing
+## Install
 
-The Alfred workflow metadata and packaging layer can sit on top of these scripts.
+1. Download the latest [`Screen Studio.alfredworkflow`](workflow/Screen%20Studio.alfredworkflow).
+2. Open the file to import it into Alfred.
+3. Give Alfred Accessibility permission in macOS System Settings.
+4. Make sure Screen Studio is installed.
 
-## Current Script Entry Points
+## Keywords
+
+### Main Command Browser
+
+- `ss`
+  - shows all supported Screen Studio actions
+
+### Recording
+
+- `ssw`
+  - shows the window recording list
+  - first item opens the Screen Studio picker manually
+  - additional items target windows by app name and window title
+
+- `ssd`
+  - shows the display recording list
+  - first item opens the Screen Studio picker manually
+  - additional items target displays by display name
+
+### One-Shot Shortcuts
+
+- `ssa` for area recording
+- `ssf` for finish recording
+- `ssc` for cancel recording
+- `ssr` for restart recording
+- `sss` for open settings
+- `ssp` for open projects folder
+- `sstc` for toggle recording controls
+- `ssta` for toggle recording area cover
+- `ssz` for copy and zip project
+
+## Permissions
+
+The smart target-selection flow relies on macOS Accessibility access.
+
+Required:
+
+- Alfred must have Accessibility permission
+- Screen Studio must be installed
+- the shell host used by Alfred may also need Accessibility permission on some Macs
+
+## Notes on Recording
+
+- `record-window` still requires confirming a target window
+- `record-display` still requires confirming a target display
+- the workflow automates that confirmation by moving the mouse to the target center and pressing `Enter`
+- final file naming and save/export steps are still manual
+
+## Development
 
 - `scripts/list_commands.sh`
   - lists all Screen Studio commands for the main Alfred Script Filter
-  - delegates to target-aware listing when query starts with `record-window ` or `record-display `
 
 - `scripts/list_windows.sh "<query>"`
   - returns Alfred JSON for matching windows
@@ -44,7 +93,7 @@ zsh tests/test_build.sh
 
 ### Dry Runs
 
-These exercises the action flow without moving the mouse or opening deep links:
+These exercise the action flow without moving the mouse or opening deep links:
 
 ```bash
 DRY_RUN=1 zsh scripts/run_action.sh finish-recording
@@ -54,7 +103,7 @@ DRY_RUN=1 FIXTURE_DISPLAYS=tests/fixtures/displays.json zsh scripts/run_action.s
 
 ### Manual Smoke Tests
 
-Use [`tests/manual-smoke-checklist.md`](/Users/song.yue/git/screenstudio-alfred-workflow/tests/manual-smoke-checklist.md) for live verification with Screen Studio and Alfred.
+Use [`tests/manual-smoke-checklist.md`](tests/manual-smoke-checklist.md) for live verification with Screen Studio and Alfred.
 
 ## Build
 
@@ -67,16 +116,6 @@ zsh workflow/build-workflow.sh
 This produces:
 
 - `workflow/Screen Studio.alfredworkflow`
-
-## Permissions
-
-The smart target-selection flow relies on macOS Accessibility access.
-
-Required:
-
-- Alfred must have Accessibility permission
-- the shell host used to run these scripts may also need Accessibility permission
-- Screen Studio must be installed
 
 ## Deep Link Notes
 

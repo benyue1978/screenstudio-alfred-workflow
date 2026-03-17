@@ -214,7 +214,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>screenstudio</string>
+				<string>ss</string>
 				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -237,7 +237,7 @@
 				<string>Screen Studio</string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>true</key>
+				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
