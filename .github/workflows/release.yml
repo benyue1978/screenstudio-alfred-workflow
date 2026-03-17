@@ -20,7 +20,7 @@ jobs:
 
       - name: Resolve Release Version
         id: version
-        shell: zsh
+        shell: bash
         run: |
           version="$(zsh .github/scripts/release_version.sh)"
           tag="v${version}"
@@ -29,14 +29,14 @@ jobs:
 
       - name: Validate Tag Trigger
         if: github.event_name == 'push'
-        shell: zsh
+        shell: bash
         run: zsh .github/scripts/validate_release_tag.sh "${GITHUB_REF_NAME}"
 
       - name: Create Release Tag For Manual Trigger
         if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: zsh
+        shell: bash
         run: |
           tag="${{ steps.version.outputs.tag }}"
           if git rev-parse "$tag" >/dev/null 2>&1; then
@@ -50,13 +50,13 @@ jobs:
           fi
 
       - name: Build Workflow Package
-        shell: zsh
+        shell: bash
         run: zsh workflow/build-workflow.sh
 
       - name: Create Or Update Release
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: zsh
+        shell: bash
         run: |
           tag="${{ steps.version.outputs.tag }}"
           artifact="workflow/Screen Studio.alfredworkflow"
