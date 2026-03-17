@@ -13,6 +13,7 @@ hover_settle="${SCREENSTUDIO_HOVER_SETTLE:-0.8}"
 
 open_deeplink() {
   local url="$1"
+  log_event "open-deeplink" "url=$url" "dry_run=${DRY_RUN:-0}"
 
   if [[ "${DRY_RUN:-0}" == "1" ]]; then
     print -r -- "open $url"
@@ -29,11 +30,12 @@ run_selected_display() {
   local url
 
   url="$(deeplink_url record-display)"
+  log_event "selected-display" "id=$id" "center_x=$center_x" "center_y=$center_y"
   open_deeplink "$url"
   if [[ "${DRY_RUN:-0}" != "1" ]]; then
     sleep "$picker_delay"
   fi
-  move_mouse_to_point "$center_x" "$center_y" "$hover_settle"
+  move_mouse_to_point display "$center_x" "$center_y" "$hover_settle"
   press_enter
 }
 
@@ -45,6 +47,7 @@ run_selected_window() {
   local url
 
   url="$(deeplink_url record-window)"
+  log_event "selected-window" "id=$id" "app=$app_name" "center_x=$center_x" "center_y=$center_y"
   open_deeplink "$url"
   if [[ "${DRY_RUN:-0}" != "1" ]]; then
     sleep "$picker_delay"
@@ -53,7 +56,7 @@ run_selected_window() {
   if [[ "${DRY_RUN:-0}" != "1" ]]; then
     sleep 0.4
   fi
-  move_mouse_to_point "$center_x" "$center_y" "$hover_settle"
+  move_mouse_to_point window "$center_x" "$center_y" "$hover_settle"
   press_enter
 }
 
@@ -69,6 +72,7 @@ run_record_display() {
 
   query="$(trim_whitespace "${1-}")"
   url="$(deeplink_url record-display)"
+  log_event "run-record-display" "query=$query"
   if [[ -z "$query" ]]; then
     open_deeplink "$url"
     return
@@ -76,6 +80,7 @@ run_record_display() {
 
   matches="$(match_displays "$query")"
   count="$(match_count display "$matches")"
+  log_event "display-match-count" "query=$query" "count=$count"
   if [[ "$count" != "1" ]]; then
     open_deeplink "$url"
     return
@@ -92,6 +97,7 @@ run_record_window() {
 
   query="$(trim_whitespace "${1-}")"
   url="$(deeplink_url record-window)"
+  log_event "run-record-window" "query=$query"
   if [[ -z "$query" ]]; then
     open_deeplink "$url"
     return
@@ -99,6 +105,7 @@ run_record_window() {
 
   matches="$(match_windows "$query")"
   count="$(match_count window "$matches")"
+  log_event "window-match-count" "query=$query" "count=$count"
   if [[ "$count" != "1" ]]; then
     open_deeplink "$url"
     return

@@ -23,3 +23,30 @@ trim_whitespace() {
   value="${value%"${value##*[![:space:]]}"}"
   print -r -- "$value"
 }
+
+screenstudio_log_dir() {
+  if [[ -n "${SCREENSTUDIO_LOG_DIR:-}" ]]; then
+    print -r -- "$SCREENSTUDIO_LOG_DIR"
+    return
+  fi
+
+  if [[ -n "${alfred_workflow_data:-}" ]]; then
+    print -r -- "$alfred_workflow_data"
+    return
+  fi
+
+  print -r -- "$(repo_root)/.screenstudio-logs"
+}
+
+screenstudio_log_file() {
+  print -r -- "$(screenstudio_log_dir)/screenstudio.log"
+}
+
+log_event() {
+  local log_dir log_file timestamp
+  log_dir="$(screenstudio_log_dir)"
+  mkdir -p "$log_dir"
+  log_file="$(screenstudio_log_file)"
+  timestamp="$(date '+%Y-%m-%d %H:%M:%S')"
+  print -r -- "$timestamp | $*" >> "$log_file"
+}
