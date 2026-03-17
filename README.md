@@ -8,7 +8,7 @@ Control Screen Studio from Alfred with:
 
 ## Install
 
-1. Download the latest [`Screen Studio.alfredworkflow`](workflow/Screen%20Studio.alfredworkflow).
+1. Download the latest release asset `Screen Studio.alfredworkflow` from GitHub Releases.
 2. Open the file to import it into Alfred.
 3. Give Alfred Accessibility permission in macOS System Settings.
 4. Make sure Screen Studio is installed.
@@ -116,6 +116,14 @@ zsh workflow/build-workflow.sh
 This produces:
 
 - `workflow/Screen Studio.alfredworkflow`
+
+## Release
+
+GitHub Actions publishes releases from the version in `workflow/src/info.plist`.
+
+- pushing a tag like `v0.1.0` creates a release if the tag matches the plist version
+- manual `workflow_dispatch` also reads the plist version and creates the matching tag if it does not already exist
+- both paths upload `workflow/Screen Studio.alfredworkflow` as the GitHub Release asset
 
 ## Deep Link Notes
 
