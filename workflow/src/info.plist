@@ -232,7 +232,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Browse Screen Studio actions or type record-window / record-display plus a target</string>
+				<string>Browse Screen Studio actions</string>
 				<key>title</key>
 				<string>Screen Studio</string>
 				<key>type</key>
